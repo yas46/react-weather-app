@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Weather extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="weather">
         <h1>weather</h1>
       </div>
     );
