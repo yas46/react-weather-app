@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from './Logo/netelogo.svg';
-// import './header.css';
+import logo from './Logo/MultiColoredLOGO.svg';
+import './header.css';
 
 class Header extends Component {
   render() {
     return (
-      <div className="header">
-        <h1>header</h1>
+      <div className="Header">
+        <img className="Header-logo" src={logo} alt="logo"/>
       </div>
     );
   }
