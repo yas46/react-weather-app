@@ -2,5 +2,30 @@
   display: block;
   margin: 8px auto;
   text-align: center;
-  max-width: 800px;
+  max-width: 400px;
+
+}
+.Header-logo {
+  display: block; 
+  height: 56px;
+}
+.weather-icon {
+  float: left;
+  width: 50%;
+}
+.weather-icon img {
+  margin-top: -20px;
+}
+#temperature {
+  font-size: 3em;
+}
+#main {
+  font-size: 1.5em;
+  margin-top: 8px;
+}
+#humidity {
+  display: block;
+  margin-top: 30px;
+  font-size: 1.1em;
+  text-align: center;
 }
