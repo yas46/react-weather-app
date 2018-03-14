@@ -18,8 +18,8 @@ const Weather = props => (
 export default Weather;
 
 Weather.propTypes = {
-  temperature: PropTypes.string.isRequired,
-  iconography: PropTypes.string.isRequired,
-  main: PropTypes.string.isRequired,
-  humidity: PropTypes.string.isRequired,
+  temperature: PropTypes.string,
+  iconography: PropTypes.string,
+  main: PropTypes.string,
+  humidity: PropTypes.string,
 };

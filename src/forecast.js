@@ -9,17 +9,18 @@ class Forecast extends Component {
         <div className="forecast">
           <ul>
             {this.props.forecast.map(day => (
-              <li>
+              <li key={day.dt}>
                 <div className="forecast-main">
                   <img className="forecast-icon" src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="weather icon" />
-                  <div className="forecast-description">
+                  <div>
                     {day.weather[0].main}
                   </div>
+                  <div>
+                    { day.temp.day }{String.fromCharCode(176)}F
+                  </div>
                 </div>
-                { day.temp.day }{String.fromCharCode(176)}F
               </li>
-              ))
-            }
+              ))}
           </ul>
         </div>
       );
