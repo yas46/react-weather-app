@@ -14,6 +14,7 @@
   width: 50%;
 }
 .weather-icon img {
+  float: right;
   margin-top: -20px;
 }
 #temperature {
@@ -28,4 +29,17 @@
   margin-top: 30px;
   font-size: 1.1em;
   text-align: center;
+}
+.forecast {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.forecast ul {
+  display: inline-block;
+}
+.forecast ul li {
+  list-style: none;
+  float: left;
+  margin: 18px
 }

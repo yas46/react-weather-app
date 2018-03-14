@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Forecast from './forecast';
 import Header from './header';
 import Location from './location';
 import Weather from './weather';
@@ -13,19 +14,25 @@ class App extends Component {
     temperature: null,
     iconography: null,
     main: null,
-    humidity: null
+    humidity: null,
+    forecast: null,
   }
 
   getWeather = async (long, lat) => {
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_key}`);
-    const data = await api_call.json();
-    console.log(data);
+    const api_weather_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${API_key}`);
+    const weatherData = await api_weather_call.json();
+    const api_forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&cnt=5&units=imperial&appid=${API_key}`);
+    const forecastData = await api_forecast_call.json();
+    const dayList = forecastData.list;
+    console.log(weatherData);
+    console.log(dayList);
     this.setState({
-      city: data.name,
-      temperature: ((9/5)*(data.main.temp - 273) + 32).toFixed(2).toString() + String.fromCharCode(176) + "F",
-      iconography: "http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" + data.weather[0].icon + ".png",
-      main: data.weather[0].main,
-      humidity: "Humidity: " + data.main.humidity + "%"
+      city: weatherData.name,
+      temperature: Math.round(weatherData.main.temp).toString() + String.fromCharCode(176) + "F",
+      iconography: "http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" + weatherData.weather[0].icon + ".png",
+      main: weatherData.weather[0].main,
+      humidity: "Humidity: " + weatherData.main.humidity + "%",
+      forecast: dayList
     });
   }
 
@@ -60,6 +67,7 @@ class App extends Component {
             humidity={this.state.humidity}
           />
         </div>
+        <Forecast forecast={this.state.forecast}/>
       </div>
     );
   }
